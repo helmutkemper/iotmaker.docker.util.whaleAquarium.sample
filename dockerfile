@@ -22,8 +22,6 @@ WORKDIR /app
 
 #EXPOSE 8080
 
-RUN echo 'ping localhost &' > /bootstrap.sh
-RUN echo 'sleep infinity' >> /bootstrap.sh
-RUN chmod +x /bootstrap.sh
+RUN go build -o ./main ./main.go
 
-CMD ["/bootstrap.sh"]
+CMD ["./main"]
