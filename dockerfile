@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y git
 RUN mkdir /app
 RUN chmod 700 /app
 
-RUN git clone -b docker git@github.com:helmutkemper/lixo.git
+COPY . /app
 
 WORKDIR /app
 
