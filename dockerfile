@@ -20,6 +20,7 @@ WORKDIR /app
 #RUN adduser -S -D -H -h /app appuser
 #USER appuser
 
+VOLUME ./static ./static
 EXPOSE 8080
 
 RUN go build -o ./main ./main.go
