@@ -7,7 +7,7 @@ COPY . /app
 
 WORKDIR /app
 
-VOLUME ./static ./static
+VOLUME /static ./static
 EXPOSE 8080
 
 RUN go build -o ./main ./main.go
