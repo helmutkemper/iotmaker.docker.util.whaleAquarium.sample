@@ -1,15 +1,16 @@
 package main
 
 import (
-  "fmt"
+  "log"
   "net/http"
 )
 
-func hello(w http.ResponseWriter, req *http.Request) {
-  fmt.Fprintf(w, "Hello World\n")
-}
-
 func main() {
-  http.HandleFunc("/", hello)
-  _ = http.ListenAndServe(":8080", nil)
+  fs := http.FileServer(http.Dir("./static"))
+  http.Handle("/", fs)
+
+  err := http.ListenAndServe(":3000", nil)
+  if err != nil {
+    log.Fatal(err)
+  }
 }
