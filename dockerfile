@@ -19,6 +19,6 @@ RUN go build -o ./main ./main.go
 #VOLUME /app/static
 #EXPOSE 3000
 
-$WORKDIR /app
+#WORKDIR /app
 
 ENTRYPOINT ["./main"]
