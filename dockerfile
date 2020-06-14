@@ -11,14 +11,9 @@ RUN go build -o ./main ./main.go
 
 FROM scratch
 
-RUN mkdir /app
-RUN chmod 700 /app
+COPY --from=builder /app .
 
-COPY --from=builder /app /app
-
-VOLUME /app/static
+VOLUME /static
 EXPOSE 3000
-
-WORKDIR /app
 
 ENTRYPOINT ["./main"]
