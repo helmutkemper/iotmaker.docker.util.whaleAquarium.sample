@@ -7,15 +7,18 @@ COPY . /app
 
 WORKDIR /app
 
-RUN go build -o ./main ./main.go
-
-FROM scratch
-
-COPY --from=builder /app /app
-
 VOLUME /app/static
 EXPOSE 3000
 
-WORKDIR /app
+RUN go build -o ./main ./main.go
 
-#ENTRYPOINT ["./main"]
+#FROM scratch
+
+#COPY --from=builder /app /app
+
+#VOLUME /app/static
+#EXPOSE 3000
+
+$WORKDIR /app
+
+ENTRYPOINT ["./main"]
