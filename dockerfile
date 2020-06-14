@@ -17,4 +17,4 @@ RUN chmod 700 /static
 VOLUME /static
 EXPOSE 3000
 
-ENTRYPOINT ["./main"]
+ENTRYPOINT ["/main"]
