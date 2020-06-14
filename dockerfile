@@ -12,7 +12,7 @@ FROM scratch
 RUN mkdir /app
 RUN chmod 700 /app
 
-COPY --from=builder /app/. /app/
+COPY --from=builder /app/ /app/
 
 #VOLUME /static
 EXPOSE 3000
