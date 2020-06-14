@@ -9,9 +9,12 @@ WORKDIR /app
 
 RUN go build -o /app/main /app/main.go
 
-#FROM scratch
+FROM scratch
 
-#COPY --from=builder /app .
+RUN mkdir /app
+RUN chmod 700 /app
+
+COPY --from=builder /app /app
 
 VOLUME /app/static
 EXPOSE 3000
