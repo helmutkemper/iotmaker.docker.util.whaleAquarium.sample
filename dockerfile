@@ -13,7 +13,7 @@ RUN go build -o /app/main /app/main.go
 
 #COPY --from=builder /app .
 
-#VOLUME /app/static
+VOLUME /app/static
 EXPOSE 3000
 
 CMD ["/app/main"]
