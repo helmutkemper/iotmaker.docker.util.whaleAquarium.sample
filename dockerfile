@@ -3,10 +3,10 @@ FROM golang:alpine3.12 as builder
 RUN mkdir /app
 RUN chmod 700 /app
 
-COPY . /app
-
 RUN mkdir /app/static
 RUN chmod 700 /app/static
+
+COPY . /app
 
 WORKDIR /app
 
