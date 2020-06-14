@@ -9,7 +9,8 @@ RUN go build -o /app/main /app/main.go
 
 FROM scratch
 
-COPY --from=builder /app/main .
+COPY --from=builder /app .
+
 
 EXPOSE 3000
 
