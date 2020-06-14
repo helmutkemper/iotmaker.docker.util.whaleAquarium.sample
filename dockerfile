@@ -13,7 +13,9 @@ FROM scratch
 
 COPY --from=builder /app .
 
+RUN ls
+
 #VOLUME /static
 EXPOSE 3000
 
-CMD ["ls"]
+CMD ["./main"]
