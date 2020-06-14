@@ -13,7 +13,7 @@ FROM scratch
 
 COPY --from=builder /app .
 
-VOLUME /static
+VOLUME /app/static
 EXPOSE 3000
 
-ENTRYPOINT ["./main"]
+ENTRYPOINT ["/app/main"]
