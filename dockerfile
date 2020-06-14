@@ -11,9 +11,6 @@ RUN go build -o /app/main /app/main.go
 
 FROM scratch
 
-RUN mkdir /app
-RUN chmod 700 /app
-
 COPY --from=builder /app /app
 COPY --from=builder /app/static /app/static
 
