@@ -3,7 +3,7 @@
 This example creates an image with this repository code and mount a new container changing
 server port 3000 to 8080
 
-```gplang
+```golang
 package main
 
 import (
@@ -45,7 +45,7 @@ func main() {
     panic(err)
   }
 
-  err, _, _ = factoryContainerFromRemoteServer.NewContainerFromRemoteServer(
+  err, _, _ = factoryContainerFromRemoteServer.NewContainerFromRemoteServerChangeExposedPortAndVolumes(
     "server:latest",
     "serverLoval",
     "server_network",
