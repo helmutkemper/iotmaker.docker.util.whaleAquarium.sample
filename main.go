@@ -8,14 +8,8 @@ import (
 )
 
 func main() {
-  //fs := http.FileServer(http.Dir("./static"))
-  //http.Handle("/", fs)
-  http.HandleFunc("/dir", func(w http.ResponseWriter, r *http.Request) {
-    d, _ := ioutil.ReadDir("./")
-    for _, v := range d {
-      fmt.Printf("%v<br>\n", v.Name())
-    }
-  })
+  fs := http.FileServer(http.Dir("./static"))
+  http.Handle("/", fs)
 
   err := http.ListenAndServe(":3000", nil)
   if err != nil {
