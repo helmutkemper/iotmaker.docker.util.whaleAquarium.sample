@@ -2,7 +2,7 @@ FROM golang:alpine3.12 as builder
 
 RUN mkdir /app
 RUN chmod 700 /app
-bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug_bug
+
 COPY . /app
 
 RUN mkdir /app/static
