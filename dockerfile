@@ -14,4 +14,4 @@ COPY --from=builder /app .
 
 EXPOSE 3000
 
-ENTRYPOINT ["/main"]
+ENTRYPOINT [""]
