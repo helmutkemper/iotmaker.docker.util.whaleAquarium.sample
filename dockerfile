@@ -16,6 +16,10 @@ FROM scratch
 
 COPY --from=builder /app .
 
+RUN mkdir /app/static
+RUN chmod 700 /app/static
+
+
 VOLUME /app/static
 EXPOSE 3000
 
