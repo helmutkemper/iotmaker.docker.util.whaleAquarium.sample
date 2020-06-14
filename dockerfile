@@ -11,10 +11,6 @@ FROM scratch
 
 COPY --from=builder /app/main .
 
-RUN mkdir /static
-RUN chmod 700 /static
-
-VOLUME /static
 EXPOSE 3000
 
 ENTRYPOINT ["/main"]
