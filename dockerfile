@@ -14,4 +14,4 @@ COPY --from=builder /app .
 
 EXPOSE 3000
 
-CMD["sleep", "1d"]
+CMD["while sleep 3600; do :; done"]
