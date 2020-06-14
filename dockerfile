@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:alpine3.12 as builder
 
 RUN mkdir /app
 RUN chmod 700 /app
@@ -10,9 +10,13 @@ RUN chmod 700 /app/static
 
 WORKDIR /app
 
+RUN go build -o ./main ./main.go
+
+FROM scratch
+
+COPY --from=builder /app .
+
 VOLUME /app/static
 EXPOSE 3000
 
-RUN go build -o ./main ./main.go
-
-CMD ["./main"]
+ENTRYPOINT ["./main"]
