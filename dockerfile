@@ -5,13 +5,18 @@ RUN chmod 700 /app
 
 COPY . /app
 
-RUN go build -o /app/main /app/main.go
+RUN mkdir /app/static
+RUN chmod 700 /app/static
+
+WORKDIR /app
+
+RUN go build -o ./main ./main.go
 
 FROM scratch
 
 COPY --from=builder /app .
 
-
+#VOLUME /app/static
 EXPOSE 3000
 
-CMD["while sleep 3600; do :; done"]
+ENTRYPOINT ["./main"]
