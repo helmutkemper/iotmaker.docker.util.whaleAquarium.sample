@@ -12,9 +12,9 @@ WORKDIR /app
 
 RUN go build -o ./main ./main.go
 
-FROM scratch
+#FROM scratch
 
-COPY --from=builder /app .
+#COPY --from=builder /app .
 
 #VOLUME /app/static
 EXPOSE 3000
