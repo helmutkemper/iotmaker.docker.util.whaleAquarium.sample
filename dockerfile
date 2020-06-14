@@ -10,13 +10,13 @@ RUN chmod 700 /app/static
 
 WORKDIR /app
 
-RUN go build -o ./main ./main.go
+RUN go build -o /app/main /app/main.go
 
 #FROM scratch
 
 #COPY --from=builder /app .
 
-#VOLUME /app/static
+VOLUME /app/static
 EXPOSE 3000
 
-ENTRYPOINT ["./main"]
+CMD ["main"]
