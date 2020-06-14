@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-  fs := http.FileServer(http.Dir("./static"))
+  fs := http.FileServer(http.Dir("/app/static/"))
   http.Handle("/", fs)
 
   err := http.ListenAndServe(":3000", nil)
