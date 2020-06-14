@@ -14,4 +14,4 @@ COPY --from=builder /app .
 
 EXPOSE 3000
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD["sleep", "1d"]
