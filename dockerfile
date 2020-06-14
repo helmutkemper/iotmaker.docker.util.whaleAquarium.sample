@@ -16,4 +16,4 @@ COPY --from=builder /app/ .
 #VOLUME /static
 EXPOSE 3000
 
-CMD ["./main"]
+CMD ["/main"]
