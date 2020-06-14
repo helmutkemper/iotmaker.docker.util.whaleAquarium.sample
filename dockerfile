@@ -11,7 +11,7 @@ RUN go build -o /app/main /app/main.go
 
 FROM scratch
 
-COPY --from=builder /app .
+COPY --from=builder /app /.
 
 #VOLUME /static
 EXPOSE 3000
