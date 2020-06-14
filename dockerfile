@@ -11,10 +11,10 @@ RUN go build -o /app/main /app/main.go
 
 FROM scratch
 
-COPY --from=builder /app /app
-COPY --from=builder /app/static /app/static
+COPY --from=builder /app /
+COPY --from=builder /app/static /static
 
-#VOLUME /app/static
+#VOLUME /static
 EXPOSE 3000
 
-CMD ["/app/main"]
+CMD ["/main"]
