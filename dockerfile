@@ -5,18 +5,16 @@ RUN chmod 700 /app
 
 COPY . /app
 
-RUN mkdir /app/static
-RUN chmod 700 /app/static
+# import golang packages to be used inside image "scratch"
+ARG CGO_ENABLED=0
 
-WORKDIR /app
-
-RUN go build -o ./main ./main.go
+RUN go build -o /app/main /app/main.go
 
 FROM scratch
 
-COPY --from=builder /app .
+COPY --from=builder /app/ .
 
-VOLUME /app/static
+VOLUME /static
 EXPOSE 3000
 
-ENTRYPOINT ["./main"]
+CMD ["/main"]
