@@ -107,3 +107,53 @@ func main() {
   }
 }
 ```
+
+Please note: Server image expose folder "/static" and port 3000. 
+This code presumes: host computer contains a folder "/static" or "C:/static" and port 
+3000 is fre for use.
+
+```golang
+package main
+
+import (
+  "fmt"
+  whaleAquarium "github.com/helmutkemper/iotmaker.docker"
+  "github.com/helmutkemper/iotmaker.docker.util.whaleAquarium/factoryContainerFromRemoteServer"
+  "github.com/helmutkemper/iotmaker.docker/factoryDocker"
+)
+
+var pullStatusChannel = factoryDocker.NewImagePullStatusChannel()
+
+func init() {
+  go func(c chan whaleAquarium.ContainerPullStatusSendToChannel) {
+
+    for {
+      select {
+      case status := <-c:
+        fmt.Printf("image pull status: %+v\n", status)
+
+        if status.Closed == true {
+          fmt.Println("image pull complete!")
+        }
+      }
+    }
+
+  }(pullStatusChannel)
+}
+
+func main() {
+  var err error
+
+  err, _, _ = factoryContainerFromRemoteServer.NewContainerFromRemoteServer(
+    "server:latest",
+    "serverLocal",
+    "server_network",
+    "https://github.com/helmutkemper/iotmaker.docker.util.whaleAquarium.sample.git",
+    []string{},
+    pullStatusChannel,
+  )
+  if err != nil {
+    panic(err)
+  }
+}
+```
