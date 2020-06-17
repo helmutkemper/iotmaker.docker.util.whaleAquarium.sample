@@ -2,7 +2,7 @@
 
 Please note: Server image expose folder "/static" and port 3000. 
 This code presumes: host computer contains a folder "/static" or "C:/static" and port 
-3000 is fre for use.
+3000 is free for use.
 
 ```golang
 var err error
