@@ -7,7 +7,7 @@ COPY . /app
 
 # import golang packages to be used inside image "scratch"
 ARG CGO_ENABLED=0
-RUN go build -o /app/main /app/main.go
+RUN go build -ldflags="-w -s" -o /app/main /app/main.go
 
 FROM scratch
 
