@@ -9,12 +9,11 @@ COPY . /app
 ARG CGO_ENABLED=0
 RUN go build -ldflags="-w -s" -o /app/main /app/main.go
 
-#FROM scratch
-FROM golang:alpine3.12
+FROM scratch
 
 COPY --from=builder /app/ .
 
-VOLUME /go/static
+VOLUME /static
 EXPOSE 3000
 
-CMD ["/go/main"]
+CMD ["/main"]
