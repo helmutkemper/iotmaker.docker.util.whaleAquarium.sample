@@ -9,7 +9,7 @@ COPY . /app
 ARG CGO_ENABLED=0
 RUN go build -ldflags="-w -s" -o /app/main /app/main.go
 
-# FROM scratch
+
 FROM golang:alpine3.12
 
 COPY --from=builder /app/ .
